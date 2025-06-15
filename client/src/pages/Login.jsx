@@ -1,16 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <>
       <div className="flex flex-col gap-5 items-center justify-center h-screen bg-gray-950">
         <form className="flex flex-col gap-4 bg-gray-400 p-6 rounded-lg">
-          <h1 className="text-2xl text-center"> Login</h1>
+          <h1 className="text-2xl text-center font-bold"> Login</h1>
           <input
             className="text-lg text-black border border-gray-300 rounded p-2"
             type="text"
             placeholder="Username"
             name="username"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            className="text-lg text-black border border-gray-300 rounded p-2"
             required
           />
           <input
@@ -26,6 +34,12 @@ const Login = () => {
           >
             Login
           </button>
+          <p className="text-center text-gray-700">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Register here
+            </Link>
+          </p>
         </form>
       </div>
     </>
