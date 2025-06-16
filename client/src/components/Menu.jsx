@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 const posts = [
   {
     id: 1,
@@ -28,7 +27,7 @@ const posts = [
     title: "Fourth Post",
     content:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    img: "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    img: "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
@@ -39,33 +38,22 @@ const posts = [
   },
 ];
 
-const Home = () => {
+const Menu = () => {
   return (
     <>
-      <div>
-        {posts.map((post, index) => (
-          <div
-            key={post.id}
-            className={`p-4 rounded flex w-full gap-10 mb-10 border-b-1 border-black  ${
-              index % 2 === 0 ? "flex-row-reverse" : ""
-            }`}
-          >
-            <div className={"w-full flex justify-start"}>
-              <img
-                src={post.img}
-                alt={post.title}
-                className="w-[70%] h-[300px]  object-cover object-fit rounded-lg mb-2 "
-              />
-            </div>
-            <div className=" flex flex-col justify-around items-center p-5">
-              <h2 className="text-4xl  font-extrabold mb-2 ">{post.title}</h2>
-              <p className="text-gray-700 text-[1.2rem] font-medium">
-                {post.content}
-              </p>
-              <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-                <Link to={`/post/${post.id}`}>Read More</Link>
-              </button>
-            </div>
+      <div className="w-full flex flex-col gap-4 justify-center items-center bg-gray-200 p-5">
+        <h1 className="text-2xl font-bold mb-5">Posts You May Also Like</h1>
+        {posts.map((post) => (
+          <div key={post.id} className="w-full mb-5 gap-5 flex flex-col ">
+            <img
+              src={post.img}
+              alt="image"
+              className="w-[100%] h-[200px] object-cover "
+            />
+            <h1 className="text-2xl font-bold text-center">{post.title}</h1>
+            <button className="rounded-md border-none hover:bg-blue-400 transition-all delay-100 p-2 font-medium text-[1.05rem] border text-gray-900 bg-blue-500 w-fit mx-auto">
+              <Link to="#">Read More</Link>
+            </button>
           </div>
         ))}
       </div>
@@ -73,4 +61,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Menu;

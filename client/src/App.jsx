@@ -1,9 +1,12 @@
 import { Route, RouterProvider } from "react-router-dom";
 import Pages from "./pages/Pages";
+import "./App.css";
 function App() {
   return (
     <>
-      <Pages />
+      <div className="app">
+        <Pages />
+      </div>
     </>
   );
 }
