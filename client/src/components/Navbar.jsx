@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import { useContext } from "react";
+
 const Navbar = () => {
+  const { currentUser, logout } = useContext(AuthContext);
   return (
     <>
       <nav className="flex justify-between items-center backdrop-blur-sm bg-black/50  p-4 sticky top-0 left-0">
@@ -41,14 +45,21 @@ const Navbar = () => {
               Food
             </Link>
           </li>
-          <span className="text-white hover:text-gray-300 font-thin">
-            Kelvin
-          </span>
 
           <span className="text-white hover:text-gray-300 font-thin">
-            {" "}
-            Logout
+            {currentUser?.username}
           </span>
+
+          {currentUser ? (
+            <span
+              onClick={logout}
+              className="text-white hover:text-gray-300 font-thin cursor-pointer"
+            >
+              Logout
+            </span>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
           <li>
             <Link
               to="/write"
