@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
+
   return (
     <>
       <nav className="flex justify-between items-center backdrop-blur-sm bg-black/50  p-4 sticky top-0 left-0">
@@ -58,7 +59,9 @@ const Navbar = () => {
               Logout
             </span>
           ) : (
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="text-white hover:text-gray-300">
+              Login
+            </Link>
           )}
           <li>
             <Link

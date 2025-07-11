@@ -18,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
     try {
       await axios.post("auth/logout");
       setCurrentUser(null);
+      alert("You've been logged out");
     } catch (err) {
       console.error("Logout failed:", err);
     }
