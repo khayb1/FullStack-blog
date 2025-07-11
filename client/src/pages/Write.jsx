@@ -3,6 +3,7 @@ import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import moment from "moment";
 
 const Write = () => {
   const state = useLocation().state;
@@ -24,7 +25,30 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    upload();
+    let imgUrl = "";
+    if (file) {
+      imgUrl = await upload();
+    }
+    try {
+      if (state) {
+        await axios.put(`/api/posts/${state.id}`, {
+          title,
+          desc: value,
+          cat,
+          img: file ? imgUrl : "",
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        });
+      } else {
+        await axios.post(`/api/posts/`, {
+          title,
+          desc: value,
+          cat,
+          img: file ? imgUrl : "",
+        });
+      }
+    } catch (err) {
+      console.error("Error saving post", err);
+    }
   };
 
   return (
